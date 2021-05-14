@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %}   {% endblock %}</h1>
+    <h2>Report a fire near you:</h2><br>
+    <form action="/report" method="post">
+        <h5>Location:</h5>
+        <input type="text" name="location"><br>
+        <h5>Description of what you saw:</h5>
+        <input type="text" name="desc"><br>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Reports from others:</h2>
+    {% for report in reports %}
+        <p>REPORT:</p>
+        {% for key, value in report.items() %}
+        <p> {{ key, ':', value }}</p>
+
+        {% endfor %}
+    {% endfor %}
+
+
+{% endblock %}
